@@ -11,8 +11,8 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('login', views.login, name='login'),
     path('morris', views.morris, name='morris'),
-    path('motifications', views.motifications, name='motifications'),
-    path('panels_wells', views.panels_wells, name='panels_wells'),
+    path('notifications', views.notifications, name='notifications'),
+    path('panels-wells', views.panels_wells, name='panels-wells'),
     path('tables', views.tables, name='tables'),
     path('typography', views.typography, name='typography'),
 

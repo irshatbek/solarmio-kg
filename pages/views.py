@@ -30,8 +30,8 @@ def login(request):
 def morris(request):
     return render(request, 'pages/morris.html')
 
-def motifications(request):
-    return render(request, 'pages/motifications.html')
+def notifications(request):
+    return render(request, 'pages/notifications.html')
 
 def panels_wells(request):
     return render(request, 'pages/panels-wells.html')
