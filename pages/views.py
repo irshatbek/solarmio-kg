@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import *
 
 # Create your views here.
 
@@ -37,7 +37,19 @@ def panels_wells(request):
     return render(request, 'pages/panels-wells.html')
 
 def tables(request):
-    return render(request, 'pages/tables.html')
+    tables = Table.objects.all()
+    items = Item.objects.all()
+    
+    data = {
+        'tables': tables,
+        'items': items,
+
+    }
+    # tables = Table.objects.all()
+    # data = {
+    #     'tables': tables,
+    # }
+    return render(request, 'pages/tables.html', data)
 
 def typography(request):
     return render(request, 'pages/typography.html')
