@@ -14,7 +14,9 @@ urlpatterns = [
     path('notifications', views.notifications, name='notifications'),
     path('panels-wells', views.panels_wells, name='panels-wells'),
     path('tables', views.tables, name='tables'),
+    path('sidebar', views.sidebar, name='sidebar'),
     path('typography', views.typography, name='typography'),
+    path('<int:id>', views.table_detail, name='table_detail'),
 
 ]
     

@@ -1,6 +1,6 @@
 from turtle import title
 from django.db import models
-
+from datetime import datetime
 # from numpy import product
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
@@ -18,20 +18,27 @@ class Table(models.Model):
         return self.name
     
 
-class Item(models.Model):  
-    Tables = models.ForeignKey(Table, verbose_name='Таблица', on_delete=models.CASCADE)
-    title = models.CharField(max_length=255, verbose_name='title')
+class Item(models.Model): 
+
+    year_choice = []
+    for r in range(2000, (datetime.now().year+1)):
+        year_choice.append((r,r))
+
+
+    tables = models.ForeignKey(Table, verbose_name='table', on_delete=models.CASCADE)
+    title = models.CharField(max_length=255, verbose_name='title', null=True)
     сountry = models.CharField(max_length=255, verbose_name='Country')
-    regions = models.CharField(max_length=255, verbose_name='regions', blank=True)
-    plant_name = models.CharField(max_length=255, verbose_name='plant_name', blank=True)
-    energies_category = models.CharField(max_length=255, verbose_name='energies_category', blank=True)
-    energy = models.CharField(max_length=255, verbose_name='energy', blank=True)
-    capacity = models.CharField(max_length=255, verbose_name='capacity', blank=True)
-    energy_generation = models.CharField(max_length=255, verbose_name='electricity_generation', blank=True)
-    Unit_name = models.CharField(max_length=255, verbose_name='Unit name', blank=True)
-    type_of_ownership = models.CharField(max_length=255, verbose_name='Type of ownership', blank=True)
-    operator = models.CharField(max_length=255, verbose_name='Operator', blank=True)
-    cost_ofenergy = models.CharField(max_length=255, verbose_name='cost_of_energy', blank=True)
+    year = models.IntegerField(('year'), choices=year_choice, null=True)
+    regions = models.CharField(max_length=255, verbose_name='regions', null=True, blank=True)
+    plant_name = models.CharField(max_length=255, verbose_name='plant_name', null=True)
+    energies_category = models.CharField(max_length=255, verbose_name='energies_category', null=True)
+    energy = models.CharField(max_length=255, verbose_name='energy', null=True)
+    capacity = models.CharField(max_length=255, verbose_name='capacity', null=True)
+    energy_generation = models.CharField(max_length=255, verbose_name='electricity_generation', null=True)
+    Unit_name = models.CharField(max_length=255, verbose_name='Unit name', null=True)
+    type_of_ownership = models.CharField(max_length=255, verbose_name='Type of ownership', null=True)
+    operator = models.CharField(max_length=255, verbose_name='Operator', null=True)
+    cost_ofenergy = models.CharField(max_length=255, verbose_name='cost_of_energy', null=True)
 
     def __str__(self):
         return self.title

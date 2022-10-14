@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import *
 
 # Create your views here.
@@ -24,8 +24,6 @@ def grid(request):
 def login(request):
     return render(request, 'pages/login.html')
 
-def login(request):
-    return render(request, 'pages/login.html')
 
 def morris(request):
     return render(request, 'pages/morris.html')
@@ -45,12 +43,31 @@ def tables(request):
         'items': items,
 
     }
-    # tables = Table.objects.all()
-    # data = {
-    #     'tables': tables,
-    # }
+
     return render(request, 'pages/tables.html', data)
+
+def sidebar(request):
+    tables = Table.objects.all()
+    items = Item.objects.all()
+    
+    data = {
+        'tables': tables,
+        'items': items,
+
+    }
+
+    return render(request, 'includes/sidebar.html', data)   
 
 def typography(request):
     return render(request, 'pages/typography.html')
 
+def table_detail(request, id):
+    single_table = get_object_or_404(Table, pk=id)
+    single_item = Item.objects.all()
+
+
+    data = {
+        'single_table': single_table,
+        'single_item': single_item,
+    }
+    return render(request, 'pages/table_detail.html', data)
