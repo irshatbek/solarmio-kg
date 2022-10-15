@@ -6,16 +6,16 @@ from .models import *
 def home(request):
     return render(request, 'pages/home.html')
 
-def country(request, id):
-    tables = get_object_or_404(Table, pk=id)
-    items = get_object_or_404(Item, pk=id)
-    countres = get_object_or_404(Country, pk=id)
-
-
+def country(request):
+    tables = Table.objects.all()
+    items = Item.objects.all()
+    countres = Country.objects.all()
+    
     data = {
         'tables': tables,
         'items': items,
         'countres': countres,
+
     }
 
     return render(request, 'pages/country.html', data)
@@ -79,11 +79,13 @@ def typography(request):
 def table_detail(request, id):
     single_table = get_object_or_404(Table, pk=id)
     single_item = Item.objects.all()
+    single_countres = get_object_or_404(Country, pk=id)
 
 
     data = {
         'single_table': single_table,
         'single_item': single_item,
+        'single_countres': single_countres,
     }
     return render(request, 'pages/table_detail.html', data)
 

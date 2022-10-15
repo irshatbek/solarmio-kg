@@ -38,7 +38,7 @@
                                     </thead>
                                     
                                     {% for item in single_item %}
-                                    {% if item.tables_id == single_table.id %}
+                                    {% if item.tables_id == single_table.id and item.country_name_id == single_table.country_name_id%}
  
                                     <tbody>
                                         <tr class="odd gradeX">

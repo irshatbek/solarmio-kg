@@ -11,10 +11,10 @@ User = get_user_model()
 
 class Country(models.Model):
     country_choice = (
-        ('Kg', 'Kyrgyzstan'),
-        ('Kz', 'Kazakhstan'),
-        ('Uz', 'Uzbekistan'),
-        ('Tj', 'Tajikistan'),
+        ('Kyrgyzstan', 'Kyrgyzstan'),
+        ('Kazakhstan', 'Kazakhstan'),
+        ('Uzbekistan', 'Uzbekistan'),
+        ('Tajikistan', 'Tajikistan'),
         
     )
 

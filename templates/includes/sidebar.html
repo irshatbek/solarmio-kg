@@ -123,21 +123,32 @@
                             
                             <!-- /.nav-second-level -->
                         </li>
+                        
                         <li>
-                            <a href="{% url 'tables' %}"><i class="fa fa-table fa-fw"></i> Tables<span class="fa arrow"></span></a>
-
-                            
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-
+                            <a href="{% url 'country' %}"><i class="fa fa-sitemap fa-fw"></i>Countres<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                {% for table in tables %}
+                        </li>
+                        <li>   
+                               
                                 <li>
-                                    <a href="{% url 'table_detail' table.id %}">{{table.name}}{{table.id}}</a>
+                                    {% for country in countres %}
+                                    <a href="#">{{country.country_name}} {{country.id}}<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        {% for table in tables %}
+                                        {% if country.id == table.country_name_id %}
+                                        
+                                        <li>
+                                            <a href="{% url 'table_detail' table.id %} ">{{table.name}}{{table.country_name_id}}</a>
+                                        </li>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                    {% endfor %}
+                                    <!-- /.nav-third-level -->
                                 </li>
-                                {% endfor %}
+                                
                             </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         
                         
