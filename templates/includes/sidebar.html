@@ -9,13 +9,13 @@
                         <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class=""></i> Kyrgyzstan</a>
+                        <li><a href="#"><i class=""></i> 0</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class=""></i> Kazakhstan</a>
+                        <li><a href="#"><i class=""></i> 0</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class=""></i> Uzbekistan</a>
+                        <li><a href="#"><i class=""></i> 0</a>
                         </li>
 
                     </ul>
@@ -124,7 +124,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{% url 'tables' %}"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="{% url 'tables' %}"><i class="fa fa-table fa-fw"></i> Tables<span class="fa arrow"></span></a>
 
                             
                             <!-- /.nav-second-level -->
@@ -134,7 +134,7 @@
                             <ul class="nav nav-second-level">
                                 {% for table in tables %}
                                 <li>
-                                    <a href="{% url 'table_detail' table.id %}">{{table.name}}</a>
+                                    <a href="{% url 'table_detail' table.id %}">{{table.name}}{{table.id}}</a>
                                 </li>
                                 {% endfor %}
                             </ul>

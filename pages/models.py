@@ -6,12 +6,30 @@ from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
+
 User = get_user_model()
 
+class Country(models.Model):
+    country_choice = (
+        ('Kg', 'Kyrgyzstan'),
+        ('Kz', 'Kazakhstan'),
+        ('Uz', 'Uzbekistan'),
+        ('Tj', 'Tajikistan'),
+        
+    )
+
+    country_name = models.CharField(choices=country_choice, max_length=255)
+    capital = models.CharField(max_length=255, verbose_name='capital', blank=True)
+    country_area = models.CharField(max_length=255, verbose_name='country_area', blank=True)
+    country_population = models.CharField(max_length=255, verbose_name='country_population', blank=True)
+    country_currency = models.CharField(max_length=255, verbose_name='country_currency', blank=True)
+    def __str__(self):
+        return self.country_name
 
 class Table(models.Model):
     
     name = models.CharField(max_length=255, verbose_name='Tables name')
+    country_name = models.ForeignKey(Country,  max_length=255, on_delete=models.CASCADE, null=True, blank=True)
     slug = models.SlugField(unique=True)
     
     def __str__(self):
@@ -25,9 +43,9 @@ class Item(models.Model):
         year_choice.append((r,r))
 
 
-    tables = models.ForeignKey(Table, verbose_name='table', on_delete=models.CASCADE)
+    tables = models.ForeignKey(Table, verbose_name='Table name', on_delete=models.CASCADE, null=True, blank=True)
+    country_name = models.ForeignKey(Country,  max_length=100, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=255, verbose_name='title', null=True)
-    сountry = models.CharField(max_length=255, verbose_name='Country')
     year = models.IntegerField(('year'), choices=year_choice, null=True)
     regions = models.CharField(max_length=255, verbose_name='regions', null=True, blank=True)
     plant_name = models.CharField(max_length=255, verbose_name='plant_name', null=True)

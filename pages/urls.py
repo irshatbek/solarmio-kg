@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('blank', views.blank, name='blank'),
+    path('country', views.country, name='country'),
     path('buttons', views.buttons, name='buttons'),
     path('flot', views.flot, name='flot'),
     path('forms', views.forms, name='forms'),
@@ -17,6 +17,7 @@ urlpatterns = [
     path('sidebar', views.sidebar, name='sidebar'),
     path('typography', views.typography, name='typography'),
     path('<int:id>', views.table_detail, name='table_detail'),
+    path('<int:id>', views.country_detail, name='country_detail'),
 
 ]
     

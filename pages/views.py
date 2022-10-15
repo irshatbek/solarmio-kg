@@ -6,8 +6,19 @@ from .models import *
 def home(request):
     return render(request, 'pages/home.html')
 
-def blank(request):
-    return render(request, 'pages/blank.html')
+def country(request, id):
+    tables = get_object_or_404(Table, pk=id)
+    items = get_object_or_404(Item, pk=id)
+    countres = get_object_or_404(Country, pk=id)
+
+
+    data = {
+        'tables': tables,
+        'items': items,
+        'countres': countres,
+    }
+
+    return render(request, 'pages/country.html', data)
 
 def buttons(request):
     return render(request, 'pages/buttons.html')
@@ -37,10 +48,12 @@ def panels_wells(request):
 def tables(request):
     tables = Table.objects.all()
     items = Item.objects.all()
+    countres = Country.objects.all()
     
     data = {
         'tables': tables,
         'items': items,
+        'countres': countres,
 
     }
 
@@ -49,10 +62,12 @@ def tables(request):
 def sidebar(request):
     tables = Table.objects.all()
     items = Item.objects.all()
+    countres = Country.objects.all()
     
     data = {
         'tables': tables,
         'items': items,
+        'countres': countres,
 
     }
 
@@ -71,3 +86,16 @@ def table_detail(request, id):
         'single_item': single_item,
     }
     return render(request, 'pages/table_detail.html', data)
+
+def country_detail(request, id):
+    single_tables = Table.objects.all()
+    single_item = Item.objects.all()
+    single_countres = get_object_or_404(Country, pk=id)
+
+
+    data = {
+        'single_tables': single_tables,
+        'single_item': single_item,
+        'single_countres': single_countres,
+    }
+    return render(request, 'pages/country_detail.html', data)

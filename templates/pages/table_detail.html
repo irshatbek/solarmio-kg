@@ -38,12 +38,11 @@
                                     </thead>
                                     
                                     {% for item in single_item %}
-
-                             
-                                   
+                                    {% if item.tables_id == single_table.id %}
+ 
                                     <tbody>
                                         <tr class="odd gradeX">
-                                            <td>{{item.tables}}</td>
+                                            <td>{{item.tables_id}}</td>
                                             <td>{{item.сountry}}</td>
                                             <td>{{item.plant_name}}</td>
                                             <td>{{item.energies_category}}</td>
@@ -55,7 +54,7 @@
                                             <td>{{item.operator}}</td>
                                             <td>{{item.cost_ofenergy}}</td>
                                         </tr>
-
+                                    {% endif %}
                                     {% endfor %}
                                  
                                     </tbody>
