@@ -5,6 +5,9 @@ from datetime import datetime
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.urls import reverse
+
+
 
 
 User = get_user_model()
@@ -19,18 +22,26 @@ class Country(models.Model):
     )
 
     country_name = models.CharField(choices=country_choice, max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     capital = models.CharField(max_length=255, verbose_name='capital', blank=True)
     country_area = models.CharField(max_length=255, verbose_name='country_area', blank=True)
     country_population = models.CharField(max_length=255, verbose_name='country_population', blank=True)
     country_currency = models.CharField(max_length=255, verbose_name='country_currency', blank=True)
+    energe_info = models.CharField(max_length=255, verbose_name='Information_about_energe', null=True, blank=True)
     def __str__(self):
         return self.country_name
+    
+    def get_absolute_url(self):
+        return reverse('country_slug', kwargs={'country_slug': self.slug})
 
 class Table(models.Model):
     
     name = models.CharField(max_length=255, verbose_name='Tables name')
     country_name = models.ForeignKey(Country,  max_length=255, on_delete=models.CASCADE, null=True, blank=True)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    
+    def get_absolute_url(self):
+        return reverse('table_slug', kwargs={'table_slug': self.slug})
     
     def __str__(self):
         return self.name

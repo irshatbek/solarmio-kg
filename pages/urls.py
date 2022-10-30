@@ -17,7 +17,8 @@ urlpatterns = [
     path('sidebar', views.sidebar, name='sidebar'),
     path('typography', views.typography, name='typography'),
     path('<int:id>', views.table_detail, name='table_detail'),
-    path('<int:id>', views.country_detail, name='country_detail'),
+    path('country_d/<int:id>', views.country_detail, name='country_detail'),
+
 
 ]
     
