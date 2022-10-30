@@ -79,7 +79,7 @@ def typography(request):
 def table_detail(request, id):
     single_table = get_object_or_404(Table, pk=id)
     single_item = Item.objects.all()
-    single_countres = get_object_or_404(Country, pk=id)
+    single_countres = Country.objects.all()
 
 
     data = {
