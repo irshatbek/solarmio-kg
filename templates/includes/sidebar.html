@@ -12,17 +12,18 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                                <form >
+                                    <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
                             </div>
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a class="active" href="{% url 'home' %}"><i class="fa fa-dashboard fa-fw"></i> About the project</a>
+                            <a class="active" href="{% url 'home' %}"><i class=""></i> About the project</a>
+                        </li>
+                        <li>
+                            <a class="active" href="{% url 'chart' %}"><i class=""></i> Charts </a>
                         </li>
 
                         

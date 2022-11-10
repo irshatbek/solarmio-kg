@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from .models import *
-
+from django.db.models import Q
 # Create your views here.
 
 def home(request):
@@ -20,17 +20,7 @@ def country(request):
 
     return render(request, 'pages/country.html', data)
 
-def buttons(request):
-    return render(request, 'pages/buttons.html')
-
-def flot(request):
-    return render(request, 'pages/flot.html')
-
-def forms(request):
     return render(request, 'pages/forms.html')
-
-def grid(request):
-    return render(request, 'pages/grid.html')
 
 def login(request):
     return render(request, 'pages/login.html')
@@ -39,11 +29,6 @@ def login(request):
 def morris(request):
     return render(request, 'pages/morris.html')
 
-def notifications(request):
-    return render(request, 'pages/notifications.html')
-
-def panels_wells(request):
-    return render(request, 'pages/panels-wells.html')
 
 def tables(request):
     tables = Table.objects.all()
@@ -73,16 +58,26 @@ def sidebar(request):
 
     return render(request, 'includes/sidebar.html', data)   
 
-def typography(request):
-    return render(request, 'pages/typography.html')
+def chart(request):
+    return render(request, 'pages/chart.html')
 
 def table_detail(request, id):
     single_table = get_object_or_404(Table, pk=id)
     single_item = Item.objects.all()
     single_countres = Country.objects.all()
+    
+    if 'q' in request.GET:
+        q = request.GET['q']
+        # data = Data.objects.filter(last_name__icontains=q)
+        multiple_q = Q(Q(country_name__icontains=q) | Q(title__icontains=q))
+        data = Item.objects.filter(multiple_q)
+    else:
+        search = Item.objects.all()
+ 
 
 
     data = {
+        'search': search,
         'single_table': single_table,
         'single_item': single_item,
         'single_countres': single_countres,
@@ -101,3 +96,4 @@ def country_detail(request, id):
         'single_countres': single_countres,
     }
     return render(request, 'pages/country_detail.html', data)
+

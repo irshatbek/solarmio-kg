@@ -1,4 +1,3 @@
-from turtle import title
 from django.db import models
 from datetime import datetime
 # from numpy import product
