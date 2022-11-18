@@ -22,36 +22,17 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>Country</th>
-                                            <th>Plant name</th>
-                                            <th>Category</th>
-                                            <th>Energy</th>
-                                            <th>Capacity</th>
-                                            <th>Electricity generation</th>
-                                            <th>Unit name</th>
-                                            <th>Type of ownership</th>
-                                            <th>Operator</th>
-                                            <th>Cost of 1 kW per hour</th>
-                                        </tr>
-                                    </thead>
-                                    {% for item in items %}
-                                    {% if item.year == 2021 %}
+
+                                    {% for post in posts %}
+                            
                                     <tbody>
                                         <tr class="odd gradeX">
-                                            <td>{{item.сountry}}</td>
-                                            <td>{{item.plant_name}}</td>
-                                            <td>{{item.energies_category}}</td>
-                                            <td>{{item.energy}}</td>
-                                            <td>{{item.capacity}}</td>
-                                            <td>{{item.energy_generatio}}</td>
-                                            <td>{{item.Unit_name}}</td>
-                                            <td>{{item.type_of_ownership}}</td>
-                                            <td>{{item.operator}}</td>
-                                            <td>{{item.cost_ofenergy}}</td>
+                                            <td>{{post.name}}</td>
+                                            <td>{{post.country_name}}</td>
+                                            <td>{{post.description}}</td>
+                                            
                                         </tr>
-                                    {% endif %}
+                    
                                     {% endfor %}
                                     </tbody>
                                 </table>

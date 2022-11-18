@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from .models import *
 from django.db.models import Q
+from django.views.generic import TemplateView, ListView
 # Create your views here.
 
 def home(request):
@@ -66,18 +67,7 @@ def table_detail(request, id):
     single_item = Item.objects.all()
     single_countres = Country.objects.all()
     
-    if 'q' in request.GET:
-        q = request.GET['q']
-        # data = Data.objects.filter(last_name__icontains=q)
-        multiple_q = Q(Q(country_name__icontains=q) | Q(title__icontains=q))
-        data = Item.objects.filter(multiple_q)
-    else:
-        search = Item.objects.all()
- 
-
-
     data = {
-        'search': search,
         'single_table': single_table,
         'single_item': single_item,
         'single_countres': single_countres,
@@ -96,4 +86,20 @@ def country_detail(request, id):
         'single_countres': single_countres,
     }
     return render(request, 'pages/country_detail.html', data)
+
+
+def search(request):
+    
+    search_post = request.GET.get('q')
+    
+    
+    if search_post:
+        posts = Table.objects.filter(Q(name__icontains=search_post) & Q(description__icontains=search_post))
+    else:
+        # If not searched, return default posts
+        posts = Table.objects.all().order_by("-id")
+        
+    return render(request, 'pages/search.html', {'posts': posts})
+    
+    
 

@@ -12,8 +12,8 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <form >
-                                    <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                                <form action='{% url 'search' %}' method='get' >
+                                    <input class="form-control mr-sm-2" name="q" type='search' type="text" placeholder="Search" aria-label="Search">
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                                 </form>
                             </div>
@@ -23,7 +23,7 @@
                             <a class="active" href="{% url 'home' %}"><i class=""></i> About the project</a>
                         </li>
                         <li>
-                            <a class="active" href="{% url 'chart' %}"><i class=""></i> Charts </a>
+                            <a class="active" href=""><i class=""></i>  </a>
                         </li>
 
                         
@@ -35,13 +35,13 @@
                                
                                 <li>
                                     {% for country in countres %}
-                                        <a href="{% url 'country_detail' country.id %}">{{country.country_name}} {{country.id}}<span class="fa arrow"></span></a>
+                                        <a href="{% url 'country_detail' country.id %}">{{country.country_name}}<span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             {% for table in tables %}
                                             {% if country.id == table.country_name_id %}
                                             
                                                 <li>
-                                                    <a href="{% url 'table_detail' table.id %} ">{{table.name}}{{table.country_name_id}}</a>
+                                                    <a href="{% url 'table_detail' table.id %} ">{{table.name}}</a>
                                                 </li>
                                             {% endif %}
                                             {% endfor %}
