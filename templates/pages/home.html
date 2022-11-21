@@ -2,8 +2,95 @@
 {% load static %}
 {% block content %}
 {% include 'includes/navbar.html' %}
-{% include 'includes/sidebar.html' %}
+{% load page_tags %}
+{% get_country as country %}
+<br>
+<main class="container">
+ 
 
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 g-3">
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="text-center">
+                  <img src="media/home1.jpg" class="img-fluid" alt="Responsive image" width="500" height="500" >
+                </div>
+              <div class="card-body">
+                <div class="text-center">
+                <p class="card-text"><h2 class="pb-4 mb-4 fst-italic border-bottom">Enerdata</h2></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h3 class="pb-4 mb-4 fst-italic border-bottom">
+            POWER CENTRAL ASIA
+        </h3>
+  
+        <article class="blog-post">
+          <h2 class="blog-post-title mb-1">Enhancing energy security, regional connectivity, and adoption of clean energy technologies across Central Asia.</h2>
+          <p class="blog-post-meta">January 1, 2021 </a></p>
+  
+          <p>Central Asia has abundant renewable energy resources, considerable opportunities for energy efficiency, and a strong desire and foundation for increased regional energy cooperation..</p>
+          <hr>
+            <div class="text-center">
+              <h2>Countres</h2>
+            </div>
+          <blockquote class="blockquote">
+        
+          {% for country in country %}
+          <h3>{{country.country_name}}</h3>
+          <p>{{country.energe_info}}</p>
+          {% endfor %}
+          
+          
+  
+
+  
+      </div>
+  
+      <div class="col-md-4">
+        <div class="position-sticky" style="top: 2rem;">
+         
+
+          <div class="p-4">
+            <h4 class="fst-italic">Countres</h4>
+            
+            <ol class="list-unstyled">
+              {% for i in country %}
+              <li><a href="{% url 'country_detail' i.pk %}">{{i}}</a></li>
+              {% endfor %}
+            </ol>
+            
+          </div>
+  
+          <div class="p-4">
+            <h4 class="fst-italic">Tables</h4>
+            {% for table in tables %}
+            <ol class="list-unstyled mb-0">
+              <li><a href="{% url 'table_detail' table.pk %}">{{table.name}}</a></li>
+
+            </ol>
+            {% endfor %}
+          </div>
+  
+          
+        </div>
+      </div>
+    </div>
+  
+  </main>
 
 
 

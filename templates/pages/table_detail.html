@@ -2,21 +2,79 @@
 {% load static %}
 {% block content %}
 {% include 'includes/navbar.html' %}
-{% include 'includes/sidebar.html' %}
 
+    <div class="container-md">
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">{{single_table.name}}</h1>
+                    <div class="text-center">
+                    <h3 class="page-header">{{tables.name}}</h3>
+                    </div>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <div class="album py-5 bg-light">
+                <div class="container">
+            
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 g-3">
+                    {% if tables.table_photo %}
+                    <div class="col">
+                      <div class="card shadow-sm">
+                        <div class="text-center">
+                            <img src="{{tables.table_photo.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
+                          </div>
+                        <div class="card-body">
+                          <p class="card-text">{{tables.photo_description}}</p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if tables.table_photo_1 %}
+                    <div class="col">
+                      <div class="card shadow-sm">
+                        <div class="text-center">
+                            <img src="{{tables.table_photo_1.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
+                          </div>
+                        <div class="card-body">
+                          <p class="card-text">{{tables.photo_description_1}}</p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if tables.table_photo_2 %}
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="text-center">
+                                <img src="{{tables.table_photo_2.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
+                              </div>
+                          <div class="card-body">
+                            <p class="card-text">{{tables.photo_description_2}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="btn-group">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>    
+                      {% endif %}         
+
+                  </div>
+                </div>
+              </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            {{single_item.tables}}
+                            {{items.tables}}
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -37,8 +95,8 @@
                                         </tr>
                                     </thead>
                                     
-                                    {% for item in single_item %}
-                                    {% if item.tables_id == single_table.id and item.country_name_id == single_table.country_name_id%}
+                                    {% for item in items %}
+                                    {% if item.table_id == table.id and item.country_name_id == tables.country_name_id%}
  
                                     <tbody>
                                         <tr class="odd gradeX">
@@ -57,53 +115,12 @@
                                     {% endfor %}
                                  
                                     </tbody>
+                                    
                                 </table>
+                                <p class="card-text">Source:{{tables.source}}</p>
                             </div>
 
-                            <style>
-                                .img-container {
-                                  text-align: center;
-                                }
-                              </style>
-
-                            {% if single_table.table_photo %}
-                            <div >
-                                <div class="img-container">
-                                    <img src="{{single_table.table_photo.url}}" class="img-fluid" alt="Responsive image" width="500" height="500">
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% if single_table.table_photo_1 %}
-                            <div >
-                                <div class="img-container>
-                                    <img src="{{single_table.table_photo_1.url}}" class="img-fluid" alt="Responsive image" width="500" height="500">
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% if single_table.table_photo_2 %}
-                            <div >
-                                <div class="img-container">
-                                    <img src="{{single_table.table_photo_2.url}}" class="img-fluid" alt="Responsive image" width="500" height="500">
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% if single_table.table_photo_3 %}
-                            <div >
-                                <div class="img-container">
-                                    <img src="{{single_table.table_photo_3.url}}" class="img-fluid" alt="Responsive image" width="500" height="500">
-                                </div>
-                            </div>
-                            {% endif %}
-                            {% if single_table.table_photo_4 %}
-                            <div >
-                                <div class="img-container">
-                                    <img src="{{single_table.table_photo_4.url}}" class="img-fluid" alt="Responsive image" width="500" height="500">
-                                </div>
-                            </div>
-                            {% endif %}
-                            <!-- /.table-responsive -->
                            
-
                             
                         </div>
                         <!-- /.panel-body -->

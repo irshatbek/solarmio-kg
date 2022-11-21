@@ -4,6 +4,7 @@ from datetime import datetime
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.urls import reverse
 
 
 
@@ -11,53 +12,48 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 User = get_user_model()
 
 class Country(models.Model):
-    country_choice = (
-        ('Kyrgyzstan', 'Kyrgyzstan'),
-        ('Kazakhstan', 'Kazakhstan'),
-        ('Uzbekistan', 'Uzbekistan'),
-        ('Tajikistan', 'Tajikistan'),
-        
-    )
 
-    country_name = models.CharField(choices=country_choice, max_length=255)
-    slug_country = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    country_name = models.CharField(max_length=255, verbose_name='Country name')
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     capital = models.CharField(max_length=255, verbose_name='capital', blank=True)
     country_area = models.CharField(max_length=255, verbose_name='country_area', blank=True)
     country_population = models.CharField(max_length=255, verbose_name='country_population', blank=True)
-    country_currency = models.CharField(max_length=255, verbose_name='country_currency', blank=True)
-    energe_info = models.CharField(max_length=255, verbose_name='Information_about_energe', null=True, blank=True)
+    country_currency = models.CharField(max_length=255, verbose_name='energe_info', blank=True)
+    energe_info = models.TextField(blank=True, verbose_name='description', null=True)
     country_photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
+    photo_description = models.TextField(blank=True, verbose_name='photo_description', null=True)
     country_photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo_description_1 = models.TextField(blank=True, verbose_name='photo_description_1', null=True)
     country_photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo_description_2 = models.TextField(blank=True, verbose_name='photo_description_2', null=True)
     country_photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    country_photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    country_photo_5 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    country_photo_6 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    country_photo_7 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    country_photo_8 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    country_photo_9 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo_description_3 = models.TextField(blank=True, verbose_name='photo_description_3', null=True)
+
     
     
     def __str__(self):
         return self.country_name
     
     def get_absolute_url(self):
-        return reverse('country_slug', kwargs={'country_slug': self.slug})
+        return reverse('country', kwargs={'country_id': self.id})
 
 class Table(models.Model):
     
     name = models.CharField(max_length=255, verbose_name='Table name')
     country_name = models.ForeignKey(Country,  max_length=255, on_delete=models.CASCADE, null=True, blank=True)
-    description = models.CharField(max_length=255, verbose_name='description', null=True, blank=True)
+    description = models.TextField(blank=True, verbose_name='description', null=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     table_photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo_description = models.TextField(blank=True, verbose_name='photo_description', null=True)
     table_photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo_description_1 = models.TextField(blank=True, verbose_name='photo_description_1', null=True)
     table_photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    table_photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    table_photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    photo_description_2 = models.TextField(blank=True, verbose_name='photo_description_2', null=True)
+    source = models.TextField(blank=True, verbose_name='source', null=True)
+
     
     def get_absolute_url(self):
-        return reverse('table_slug', kwargs={'table_slug': self.slug})
+        return reverse('table', kwargs={'table_id': self.id})
     
     def __str__(self):
         return self.name
@@ -84,6 +80,7 @@ class Item(models.Model):
     type_of_ownership = models.CharField(max_length=255, verbose_name='Type of ownership', null=True)
     operator = models.CharField(max_length=255, verbose_name='Operator', null=True)
     cost_ofenergy = models.CharField(max_length=255, verbose_name='cost_of_energy', null=True)
+ 
 
 
     def __str__(self):

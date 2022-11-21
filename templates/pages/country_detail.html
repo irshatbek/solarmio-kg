@@ -2,148 +2,180 @@
 {% load static %}
 {% block content %}
 {% include 'includes/navbar.html' %}
-{% include 'includes/sidebar.html' %}
 
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">{{single_countres.country_name}}</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    
-                    <div class="panel panel-default">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        Information about the country
-                                    </div>
 
-                                    <!-- .panel-heading -->
-                                    <div class="panel-body">
-                                        <div class="panel-group" id="accordion">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h4 class="panel-title">
-                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Basic information about {{single_countres.country_name}} </a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseOne" class="panel-collapse collapse in">
-                                                    <div class="panel-body">
-                                                        <p>
-                                                        Capital: {{single_countres.capital}}
-                                                        <p>
-                                                        Country area: {{single_countres.country_area}}
-                                                        <p>
-                                                        Country population: {{single_countres.country_population}}
-                                                        <p>
-                                                        Country currency {{single_countres.country_currency}}
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h4 class="panel-title">
-                                                        <a >Energy sector in {{single_countres.country_name}}</a>
-                                                    </h4>
-                                                </div>
-                                                <div >
-                                                    <div class="panel-body">
-                                                        {{single_countres.energe_info}}
-                                                    </div>
-                                                </div>
-                                             
-                                            </div>
-                                            <div class="panel panel-default">
-                                                <style>
-                                                    .img-container {
-                                                      text-align: center;
-                                                    }
-                                                  </style>
-                                                <div >
-                                                    {% if single_countres.country_photo %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                    {% if single_countres.country_photo_1 %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo_1.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                    {% if single_countres.country_photo_2 %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo_2.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                    {% if single_countres.country_photo_3 %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo_3.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                    {% if single_countres.country_photo_4 %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo_4.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                    {% if single_countres.country_photo_5 %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo_5.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                    {% if single_countres.country_photo_6 %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo_6.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                    {% if single_countres.country_photo_7 %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo_7.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                    {% if single_countres.country_photo_8 %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo_8.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                    {% if single_countres.country_photo_9 %}
-                                                    <div class="img-container">
-                                                        <img src="{{single_countres.country_photo_9.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
-                                                    </div>
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- .panel-body -->
-                                </div>
-                                <!-- /.panel -->
-                            </div>
-                            <!-- /.col-lg-12 -->
-                        </div>
-
-                       
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-
-           
-            <!-- /.row -->
-
-        </div>
-        <!-- /#page-wrapper -->
-
+  
+<br>
+<main class="container-md">
+    
+  
+    <div class="row mb-2">
+      
     </div>
-    <!-- /#wrapper -->
+  
+    <div class="row g-5">
+      <div class="col-md-8">
+
+  
+        <article class="blog-post">
+            <div class="text-center">
+                <h2 class="blog-post-title mb-1">{{country.country_name}}</h2>
+            </div>
+          <div class="album py-5 bg-light">
+            <div class="container">
+        
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 g-3">
+                {% if country.country_photo %}
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <div class="text-center">
+                        <img src="{{country.country_photo.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
+                      </div>
+                    <div class="card-body">
+                      <p class="card-text">{{country.photo_description}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% if country.country_photo_1 %}
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <div class="text-center">
+                        <img src="{{country.country_photo_1.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
+                      </div>
+                    <div class="card-body">
+                      <p class="card-text">{{country.photo_description_1}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% if country.country_photo_2 %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="text-center">
+                            <img src="{{country.country_photo_2.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
+                          </div>
+                      <div class="card-body">
+                        <p class="card-text">{{country.photo_description_2}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>    
+                  {% endif %}         
+                  {% if country.country_photo_3 %}
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <div class="text-center">
+                        <img src="{{country.country_photo_3.url}}" class="img-fluid" alt="Responsive image" width="500" height="500" >
+                      </div>
+        
+                    <div class="card-body">
+                      <p class="card-text">{{country.photo_description_3}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+    <div class="album py-5 bg-light">
+        
+        <div class="text-center">
+            <h2 class="blog-post-title mb-1">Tables</h2>
+          </div>
+        <div class="container">
+            
+    
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for table in tables %}
+            {% if table.country_name_id == country.id %}
+            
+            
+            
+            <div class="col">
+              <div class="card shadow-sm">
+                
+                <div class="card-body">
+                    <h3>{{table.name}}</h3>
+                  <p class="card-text">{{table.description}}.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url 'table_detail' table.pk %}" class="btn btn-sm btn-outline-secondary">View</a>
+                    </div>
+                    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      
+
+ 
+    </div>
+
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-light rounded">
+          <h4 class="fst-italic">About {{country.country_name}}</h4>
+          <p class="mb-0">{{country.energe_info}}</p>
+        </div>
+
+        <div class="p-4">
+          <h4 class="fst-italic">Information about {{country.country_name}}</h4>
+          <ol class="list-unstyled mb-0">
+            <li>Capital: {{country.capital}}</li>
+            <li>Country area: {{country.country_area}}</li>
+            <li>Country population: {{country.country_population}}  </li>
+            <li>Country currency {{country.country_currency}}</li>
+
+          </ol>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+
+  
+
+  
+
+
+
+    
+  </body>
+</html>
+  
+  
+
+  
 
 {% endblock %}

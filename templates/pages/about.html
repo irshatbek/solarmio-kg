@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'includes/navbar.html' %}
+
+
+{% load page_tags %}
+{% get_country as country %}
+<br>
+<main class="container">
+
+    <div class="row g-5">
+      <div class="col-md-8">
+        <h3 class="pb-4 mb-4 fst-italic border-bottom">
+            Welcome to Enerdata!
+        </h3>
+  
+        <article class="blog-post">
+          
+          <p class="blog-post-meta">Our goal is to make it easy for you to pick the best product and to help you be confident in your purchase decision by giving you comprehensive and thorough product guides.</a></p>
+  
+  
+
+  
+      </div>
+  
+      <div class="col-md-4">
+        <div class="position-sticky" style="top: 2rem;">
+  
+          <div class="p-4">
+            <h4 class="fst-italic">Countres</h4>
+            
+            <ol class="list-unstyled">
+              {% for i in country %}
+              <li><a href="{% url 'country_detail' i.pk %}">{{i}}</a></li>
+              {% endfor %}
+            </ol>
+            
+          </div>
+  
+          <div class="p-4">
+            <h4 class="fst-italic">Tables</h4>
+            {% for table in tables %}
+            <ol class="list-unstyled mb-0">
+              <li><a href="{% url 'table_detail' table.pk %}">{{table.name}}</a></li>
+
+            </ol>
+            {% endfor %}
+          </div>
+  
+          
+        </div>
+      </div>
+    </div>
+  
+  </main>
+
+
+
+{% endblock %}

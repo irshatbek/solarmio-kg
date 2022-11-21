@@ -1,13 +1,45 @@
 {% load static %}
+{% load page_tags %}
 <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url 'home' %}"><img src="\media\logo.png" class="img-fluid" alt="Responsive image" width="80" height="30" ></a>
-            </div>
-            <!-- /.navbar-header -->
+
+<!-- /.navbar-header -->
+
+
+
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark" class ='navbar-custom'>
+              {% get_country as country %}
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About project</a>
+                      </li>
+                      
+                      <li class="nav-item dropdown" >
+                        <a class="nav-link dropdown-toggle" href="{% url 'country' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Countres
+                        </a>
+                        
+                        <ul class="dropdown-menu">
+                        {% for count in country %}
+                          <li><a class="dropdown-item" href="{% url 'country_detail' count.pk %}">{{count.country_name}}</a></li>
+                        {% endfor %}
+
+                        </ul>
+                      </li>
+                    </ul>
+                    <form class="d-flex" role="search" action='{% url 'search' %}' method='get'>
+                      <input class="form-control me-2" type="search" type="text" placeholder="Search" aria-label="Search" name="q">
+                      <button class="btn btn-light" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+
+<!-- /.navbar-header -->
+
+
