@@ -18,8 +18,9 @@ class Country(models.Model):
     capital = models.CharField(max_length=255, verbose_name='capital', blank=True)
     country_area = models.CharField(max_length=255, verbose_name='country_area', blank=True)
     country_population = models.CharField(max_length=255, verbose_name='country_population', blank=True)
-    country_currency = models.CharField(max_length=255, verbose_name='energe_info', blank=True)
-    energe_info = models.TextField(blank=True, verbose_name='description', null=True)
+    country_currency = models.CharField(max_length=255, verbose_name='country_currency', blank=True)
+    about_country = models.TextField(blank=True, verbose_name='about_country', null=True)
+    energe_info = models.TextField(blank=True, verbose_name='energe_info', null=True)
     country_photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_description = models.TextField(blank=True, verbose_name='photo_description', null=True)
     country_photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -35,7 +36,7 @@ class Country(models.Model):
         return self.country_name
     
     def get_absolute_url(self):
-        return reverse('country', kwargs={'country_id': self.id})
+        return reverse('country', kwargs={'country_id': self.pk})
 
 class Table(models.Model):
     
@@ -53,7 +54,7 @@ class Table(models.Model):
 
     
     def get_absolute_url(self):
-        return reverse('table', kwargs={'table_id': self.id})
+        return reverse('table', kwargs={'table_id': self.pk})
     
     def __str__(self):
         return self.name

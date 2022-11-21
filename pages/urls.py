@@ -8,8 +8,8 @@ urlpatterns = [
     path('tables', views.tables, name='tables'),
     path('search', views.search, name='search'),
     path('navbar', views.navbar, name='navbar'),
-    path('<int:table_id>', views.table_detail, name='table_detail'),
-    path('country_d/<int:country_id>/', views.country_detail, name='country_detail'),
+    path('table/<int:table_id>/', views.table_detail, name='table_detail'),
+    path('country/<int:country_id>/', views.country_detail, name='country_detail'),
 
 
 
