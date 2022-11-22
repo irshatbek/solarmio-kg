@@ -73,9 +73,9 @@ def search(request):
     items = Item.objects.all() 
 
     if search_post:
-        posts = Table.objects.filter(Q(name__icontains=search_post) & Q(description__icontains=search_post))
+        posts = Table.objects.filter(Q(name__icontains=search_post) | Q(description__icontains=search_post))
     else:
-        # If not searched, return default posts
+       
         posts = Table.objects.all().order_by("-id")  
     return render(request, 'pages/search.html', {'posts': posts, 'items': items,})
     
