@@ -154,3 +154,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Whitenoise settings
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_S3_ACCESS_KEY_ID = 'AKIA5MN4M2NOGUGGLX44'
+AWS_S3_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'enerdata'
+AWS_QUERYSTRING_AUTH = False
