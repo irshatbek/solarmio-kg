@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'includes/navbar.html' %}
+
+<br>
+<br>
+<!-- Search box 3 start -->
+<div class="search-box-3 sb-7 bg-active">
+    <div class="container">
+        <div class="search-area-inner">
+            <div class="search-contents">
+                <form method="GET" action="{% url 'filter_search' %}">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <select class="form-select" name="table_country">
+                                    <option selected='selected' disabled='disabled'>Select Country</option>
+                                    {% for country in country_name_search %}
+                                      <option value="{{country }}">{{country }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <select class="form-select" name="year">
+                                    <option selected='selected' disabled='disabled'>Select Year</option>
+                                    {% for year in year_search %}
+                                      <option value="{{year}}">{{year}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <select class="form-select" name="energy_type">
+                                    <option selected='selected' disabled='disabled'>Energy type</option>
+                                    {% for energy in energy_type_search %}
+                                      <option value="{{energy}}">{{energy}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                            <div class="form-group">
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-search"></i>Find
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Search box 3 end -->
+
+
+
+
+<!-- Featured car end -->
+
+<main>
+    <h1 class="visually-hidden">Features examples</h1>
+  
+    <div class="container px-4 py-5" id="featured-3">
+      <h2 class="pb-2 border-bottom">Tables</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        {% for table in tables %}
+        <div class="container-md">
+            
+            <br>
+            <div class="card">
+                
+                <h5 class="card-header">Table: {{table.name}}</h5>
+                <div class="card-body">
+                <h5 class="card-title">Country: {{table.table_country}}</h5>
+                <p class="card-text">Year: {{table.year}}</p>
+                <p class="card-text">Energy type : {{table.energy_type}}</p>
+                <p class="card-text">Table description: {{table.description}}</p>
+                <a href="{% url 'table_detail' table.pk %}" class="btn btn-sm btn-outline-secondary">View</a>
+            
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</main>
+{% endblock %}

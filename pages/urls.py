@@ -5,13 +5,9 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('country', views.country, name='country'),
     path('about', views.about, name='about'),
-    path('tables', views.tables, name='tables'),
-    path('search', views.search, name='search'),
-    path('navbar', views.navbar, name='navbar'),
     path('table/<int:table_id>/', views.table_detail, name='table_detail'),
     path('country/<int:country_id>/', views.country_detail, name='country_detail'),
-
-
+    path('filter_search', views.filter_search, name='filter_search'),
 
 
 ]

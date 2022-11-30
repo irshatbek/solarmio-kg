@@ -83,6 +83,8 @@
                                     <thead>
                                         <tr>
                                             <th>Country</th>
+                                            <th>Period</th>
+                                            <th>Region</th>
                                             <th>Plant name</th>
                                             <th>Category</th>
                                             <th>Energy</th>
@@ -91,16 +93,18 @@
                                             <th>Unit name</th>
                                             <th>Type of ownership</th>
                                             <th>Operator</th>
-                                            <th>Cost of 1 kW per hour</th>
+                                            <th>Cost</th>
                                         </tr>
                                     </thead>
                                     
                                     {% for item in items %}
-                                    {% if item.table_id == table.id and item.country_name_id == tables.country_name_id%}
+                                    {% if item.table_id == table.id and item.country_name_id == tables.country_id%}
  
                                     <tbody>
                                         <tr class="odd gradeX">
                                             <td>{{item.country_name}}</td>
+                                            <td>{{item.year}}</td>
+                                            <td>{{item.regions}}</td>
                                             <td>{{item.plant_name}}</td>
                                             <td>{{item.energies_category}}</td>
                                             <td>{{item.energy}}</td>

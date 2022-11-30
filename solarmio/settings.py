@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'solarmio.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'enerdata_db',
+#         'NAME': 'enerdata_db_two',
 #         'USER': 'postgres',
 #         'PASSWORD': 'admin',
 #         'HOST': 'localhost',

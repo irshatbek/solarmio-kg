@@ -39,14 +39,7 @@ def tables(request):
     }
     return render(request, 'pages/tables.html', data)
 
-def navbar(request):
-    tables = Table.objects.all()
-    items = Item.objects.all()
-    data = {
-        'tables': tables,
-        'items': items,
-    }
-    return render(request, 'includes/navbar.html', data)   
+
 
 def table_detail(request, table_id):
     tables = get_object_or_404(Table, pk=table_id)
@@ -68,16 +61,38 @@ def country_detail(request, country_id):
     }
     return render(request, 'pages/country_detail.html', data)
 
-def search(request):
-    search_post = request.GET.get('q')
-    items = Item.objects.all() 
 
-    if search_post:
-        posts = Table.objects.filter(Q(name__icontains=search_post) | Q(description__icontains=search_post))
-    else:
-       
-        posts = Table.objects.all().order_by("-id")  
-    return render(request, 'pages/search.html', {'posts': posts, 'items': items,})
-    
+
+def filter_search(request):
+        
+    # other filter search
+    tables = Table.objects.all().order_by("-id")
+
+    country_name_search = Table.objects.values_list('table_country', flat=True).distinct()
+    year_search = Table.objects.values_list('year', flat=True).distinct()
+    energy_type_search = Table.objects.values_list('energy_type', flat=True).distinct()
     
 
+    if 'energy_type' in request.GET:
+        type = request.GET['energy_type']
+        if type:
+            tables = tables.filter(energy_type__iexact=type)
+    
+    if 'year' in request.GET:
+        year_t = request.GET['year']
+        if year_t:
+            tables = tables.filter(year__iexact=year_t)
+
+    if 'table_country' in request.GET:
+        city = request.GET['table_country']
+        if city:
+            tables = tables.filter(table_country__iexact=city)
+         
+    data = {
+        'tables': tables,
+        'country_name_search': country_name_search,
+        'year_search': year_search,
+        'energy_type_search': energy_type_search,
+    }
+    return render(request, 'pages/filter_search.html', data)
+    

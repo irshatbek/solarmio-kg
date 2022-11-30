@@ -13,7 +13,7 @@ User = get_user_model()
 
 class Country(models.Model):
 
-    country_name = models.CharField(max_length=255, verbose_name='Country name')
+    country_name = models.CharField(max_length=255, verbose_name='country_name')
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     capital = models.CharField(max_length=255, verbose_name='capital', blank=True)
     country_area = models.CharField(max_length=255, verbose_name='country_area', blank=True)
@@ -40,9 +40,16 @@ class Country(models.Model):
 
 class Table(models.Model):
     
+    year_choice = []
+    for r in range(2000, (datetime.now().year+1)):
+        year_choice.append((r,r))
+    
     name = models.CharField(max_length=255, verbose_name='Table name')
-    country_name = models.ForeignKey(Country,  max_length=255, on_delete=models.CASCADE, null=True, blank=True)
+    country = models.ForeignKey(Country,  max_length=255, on_delete=models.CASCADE, null=True, blank=True, verbose_name='country_name')
+    table_country = models.CharField(max_length=255, verbose_name='table_country', null=True)
+    year = models.IntegerField(('year'), choices=year_choice, null=True)
     description = models.TextField(blank=True, verbose_name='description', null=True)
+    energy_type = models.CharField(max_length=255, verbose_name='energy_type', null=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     table_photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_description = models.TextField(blank=True, verbose_name='photo_description', null=True)
@@ -76,7 +83,9 @@ class Item(models.Model):
     energies_category = models.CharField(max_length=255, verbose_name='energies_category', null=True)
     energy = models.CharField(max_length=255, verbose_name='energy', null=True)
     capacity = models.FloatField(verbose_name='capacity', null=True)
+    measuring_unit = models.CharField(max_length=255, verbose_name='unit', null=True)
     energy_generation = models.FloatField(verbose_name='electricity_generation', null=True)
+    measuring_unit_generation = models.CharField(max_length=255, verbose_name='unit', null=True)
     Unit_name = models.CharField(max_length=255, verbose_name='Unit name', null=True)
     type_of_ownership = models.CharField(max_length=255, verbose_name='Type of ownership', null=True)
     operator = models.CharField(max_length=255, verbose_name='Operator', null=True)

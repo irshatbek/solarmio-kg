@@ -18,6 +18,9 @@
                       <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">About project</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'filter_search' %}">Tables</a>
+                      </li>
                       
                       <li class="nav-item dropdown" >
                         <a class="nav-link dropdown-toggle" href="{% url 'country' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,13 +35,9 @@
                         </ul>
                       </li>
                     </ul>
-                    <form class="d-flex" role="search" action='{% url 'search' %}' method='get'>
-                      <input class="form-control me-2" type="search" type="text" placeholder="Search" aria-label="Search" name="q">
-                      <button class="btn btn-light" type="submit">Search</button>
-                    </form>
+                   
                   </div>
                 </div>
               </nav>
 
 <!-- /.navbar-header -->
-
