@@ -74,17 +74,31 @@ TEMPLATES = [
 WSGI_APPLICATION = 'solarmio.wsgi.application'
 
 
+# Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'enerdata_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+
+
+#     }
+# }
 
 
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+DATABASES = {'default': dj_database_url.config(default='postgres://postgres:admin@localhost/enerdata_db')}
 
 
 # Password validation
@@ -139,11 +153,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Whitenoise settings
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# AWS_S3_ACCESS_KEY_ID = 'AKIA5MN4M2NOGUGGLX44'
-# AWS_S3_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'enerdata'
-# AWS_QUERYSTRING_AUTH = False
+AWS_S3_ACCESS_KEY_ID = 'AKIA5MN4M2NOGUGGLX44'
+AWS_S3_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'enerdata'
+AWS_QUERYSTRING_AUTH = False
