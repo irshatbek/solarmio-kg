@@ -74,21 +74,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'solarmio.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'enerdata_db_two',
-#         'USER': 'postgres',
-#         'PASSWORD': 'admin',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-
-
-#     }
-# }
 
 
 
@@ -98,7 +84,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-# DATABASES = {'default': dj_database_url.config(default='postgres://postgres:admin@localhost/enerdata_db')}
+
 
 
 # Password validation
