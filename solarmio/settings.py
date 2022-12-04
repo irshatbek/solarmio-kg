@@ -92,13 +92,13 @@ WSGI_APPLICATION = 'solarmio.wsgi.application'
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-DATABASES = {'default': dj_database_url.config(default='postgres://postgres:admin@localhost/enerdata_db')}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+# DATABASES = {'default': dj_database_url.config(default='postgres://postgres:admin@localhost/enerdata_db')}
 
 
 # Password validation
