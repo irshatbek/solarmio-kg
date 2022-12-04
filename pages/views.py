@@ -6,10 +6,10 @@ from django.views.generic import TemplateView, ListView
 
 def country(request):
     tables = Table.objects.all()
-    items = Item.objects.all() 
+    countre = Country.objects.all() 
     data = {
         'tables': tables,
-        'items': items,
+        'countre': countre,
     }
     return render(request, 'pages/country.html', data)
 
@@ -52,11 +52,9 @@ def table_detail(request, table_id):
 
 def country_detail(request, country_id):
     tables = Table.objects.all()
-    items = Item.objects.all()
     country = get_object_or_404(Country, pk=country_id)
     data = {
         'tables': tables,
-        'items': items,
         'country': country,
     }
     return render(request, 'pages/country_detail.html', data)
